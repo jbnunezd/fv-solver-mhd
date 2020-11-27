@@ -745,11 +745,17 @@ END IF
 IF (ABS(Sy) .LT. MIN_MOMENTUM) THEN
   Sy = 0.0
 END IF
+IF (ABS(Sz) .LT. MIN_MOMENTUM) THEN
+  Sz = 0.0
+END IF
 IF (ABS(Bx) .LT. MIN_MAGNETIC) THEN
   Bx = 0.0
 END IF
 IF (ABS(By) .LT. MIN_MAGNETIC) THEN
   By = 0.0
+END IF
+IF (ABS(Bz) .LT. MIN_MAGNETIC) THEN
+  Bz = 0.0
 END IF
 
 Prim(1) = rho
@@ -790,7 +796,7 @@ REAL,INTENT(OUT) :: Cons(1:nVar)
 REAL             :: rho, vx, vy, vz, p, Bx, By, Bz
 REAL             :: v2, B2
 REAL             :: Psi
-!--------------------------------------------------------------------------------------------------!
+!-------------------------------------------------------------------------------!
 
 rho = Prim(1)
 vx  = Prim(2)
@@ -851,7 +857,6 @@ SUBROUTINE EvaluateFlux1D(Prim,Flux)
 !-------------------------------------------------------------------------------!
 USE MOD_FiniteVolume2D_vars,ONLY: nVar
 USE MOD_FiniteVolume2D_vars,ONLY: Kappa
-USE MOD_FiniteVolume2D_vars,ONLY: KappaM1
 USE MOD_FiniteVolume2D_vars,ONLY: sKappaM1
 !-------------------------------------------------------------------------------!
 IMPLICIT NONE
@@ -865,7 +870,7 @@ REAL,INTENT(OUT) :: Flux(1:nVar)
 !-------------------------------------------------------------------------------!
 REAL             :: rho, vx, vy, vz, p, Bx, By, Bz
 REAL             :: v2, B2, pt
-!--------------------------------------------------------------------------------------------------!
+!-------------------------------------------------------------------------------!
 
 rho = Prim(1)
 vx  = Prim(2)
@@ -1051,9 +1056,9 @@ SUBROUTINE MixedGLM
 ! Divergence Cleaning with mixed GLM
 !-------------------------------------------------------------------------------!
 USE MOD_FiniteVolume2D_vars,ONLY: U
-USE MOD_FiniteVolume2D_vars,ONLY: GLM_alpha
-USE MOD_FiniteVolume2D_vars,ONLY: nVar
 USE MOD_FiniteVolume2D_vars,ONLY: CFL
+USE MOD_FiniteVolume2D_vars,ONLY: nVar
+USE MOD_FiniteVolume2D_vars,ONLY: GLM_alpha
 !-------------------------------------------------------------------------------!
 IMPLICIT NONE
 !-------------------------------------------------------------------------------!
