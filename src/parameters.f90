@@ -53,7 +53,7 @@ IMPLICIT NONE
 CHARACTER(LEN=255) :: ErrorMessage
 !-------------------------------------------------------------------------------!
 
-InitialCondition = 217
+InitialCondition = 211
 
 PrimRefState1 = (/1.4,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0/)
 PrimRefState2 = (/1.4,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0/)

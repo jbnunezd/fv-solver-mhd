@@ -705,6 +705,7 @@ USE MOD_FiniteVolume2D_vars,ONLY: KappaM1
 USE MOD_FiniteVolume2D_vars,ONLY: sKappaM1
 USE MOD_FiniteVolume2D_vars,ONLY: MIN_DENSITY, MIN_ENERGY
 USE MOD_FiniteVolume2D_vars,ONLY: MIN_MOMENTUM, MIN_MAGNETIC
+USE MOD_FiniteVolume2D_vars,ONLY: MIN_PSI
 !-------------------------------------------------------------------------------!
 IMPLICIT NONE
 !-------------------------------------------------------------------------------!
@@ -757,6 +758,9 @@ END IF
 IF (ABS(Bz) .LT. MIN_MAGNETIC) THEN
   Bz = 0.0
 END IF
+IF (ABS(Psi) .LT. MIN_MAGNETIC) THEN
+  Psi = 0.0
+END IF
 
 Prim(1) = rho
 Prim(2) = Sx/rho
@@ -783,6 +787,7 @@ USE MOD_FiniteVolume2D_vars,ONLY: KappaM1
 USE MOD_FiniteVolume2D_vars,ONLY: sKappaM1
 USE MOD_FiniteVolume2D_vars,ONLY: MIN_DENSITY, MIN_PRESSURE
 USE MOD_FiniteVolume2D_vars,ONLY: MIN_SPEED, MIN_MAGNETIC
+USE MOD_FiniteVolume2D_vars,ONLY: MIN_PSI
 !-------------------------------------------------------------------------------!
 IMPLICIT NONE
 !-------------------------------------------------------------------------------!
@@ -834,6 +839,9 @@ IF (ABS(By) .LT. MIN_MAGNETIC) THEN
 END IF
 IF (ABS(Bz) .LT. MIN_MAGNETIC) THEN
   Bz = 0.0
+END IF
+IF (ABS(Psi) .LT. MIN_PSI) THEN
+  Psi = 0.0
 END IF
 
 Cons(1) = rho
